@@ -62,7 +62,7 @@ MemberPrism 目前提供的功能包括：
 首先通过 clone 本项目代码
 
 ```bash
-git clone https://github.com/easychen/member-prism.git prism
+git clone git clone https://github.com/easychen/MemberPrism2.git prism
 ```
 
 进入目录，通过 `docker-compose` 启动服务

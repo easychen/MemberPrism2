@@ -20,7 +20,7 @@ class RoboFile extends \Robo\Tasks
         {
             $this->_exec("git clone $repo $tmp_dir");
         }
-        $this->_exec("cd $tmp_dir && rm -rf .git && cp -rf ./* /Users/Easy/Code/gitcode/MemberPrism2/ && cp -rf ./.vscode /Users/Easy/Code/gitcode/MemberPrism2/ && cp -rf ./.vscode /Users/Easy/Code/gitcode/MemberPrism2/ && git add . && git commit -m '$note' && git push");
+        $this->_exec("cd $tmp_dir && cp -rf ./* /Users/Easy/Code/gitcode/MemberPrism2/ && cp -rf ./.vscode /Users/Easy/Code/gitcode/MemberPrism2/ && cp -rf ./.vscode /Users/Easy/Code/gitcode/MemberPrism2/ && cd  /Users/Easy/Code/gitcode/MemberPrism2/ && git add . && git commit -m '$note' && git push");
 
     }
 }

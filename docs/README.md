@@ -65,7 +65,7 @@ First, you need a container environment that supports `git` and `docker-compose`
 Start by clone the project code
 
 ```bash
-git clone https://github.com/easychen/member-prism.git prism
+git clone https://github.com/easychen/MemberPrism2.git prism
 ```
 
 Go to the directory and start the service with `docker-compose`
