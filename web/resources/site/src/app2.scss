@@ -1,0 +1,180 @@
+.prism-layout
+{
+    position: fixed !important;
+    left: 0px;
+    right:0px;
+    bottom: 0px;
+    top:0px;
+    background-color: rgba($color: #000000, $alpha: .8);
+    z-index: 99999;
+
+    .center-box
+    {
+        max-width: 600px;
+        max-height: 500px;
+
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+
+        border-radius: 5px;
+        padding:20px;
+
+        position: relative;
+    }
+
+    .top
+    {
+        text-align: right;
+        .sp-close-btn
+        {
+            display: inline-block;
+            position: absolute;
+            top:-30px;
+            right:-30px;
+            color:white;
+            font-size: 12px;
+            font-family: monospace;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+    // .body
+    // {
+
+    // }
+
+    .half
+    {
+        width: 50%;
+    }
+
+    input,button
+    {
+        width:100%;
+        height:40px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-sizing:border-box!important;
+    }
+
+    input
+    {
+        font-size: 12px;
+        padding-left:10px;
+        padding-right:10px;
+
+        &::placeholder
+        {
+            color:#ccc;
+        }
+    }
+
+    button
+    {
+        background-color: #2B87DC;
+        color:white;
+        padding:5px;
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:10px;
+        font-size: 14px;
+    }
+
+    .top
+    {
+        margin-top: 10px;
+    }
+
+    .row
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &:not(:last-child)
+        {
+            margin-bottom: 10px;
+        }
+
+        &.whole
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:not(.whole)
+        {
+            .title
+            {
+                flex:1;
+            }
+            .line
+            {
+                flex:3;
+            }
+        }
+
+    }
+
+    .prism-form
+    {
+        font-size: 12px;
+        padding:20px;
+
+    }
+
+    .prismtabs
+    {
+        .tab-nav
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 10px;
+            a
+            {
+                cursor: pointer;
+                display: inline-block;
+                padding-bottom: 5px;
+                border-bottom: 2px transparent solid;
+                &:not(:last-child)
+                {
+                    margin-right: 20px;
+                }
+                &.active
+                {
+                    color:black;
+                    border-bottom: 2px black solid;
+                }
+
+            }
+        }
+    }
+    .xspan
+    {
+        font-size: small;
+        color:white;
+        background-color: #2B87DC;
+        padding:2px;
+        padding-left:5px;
+        padding-right:5px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border-radius: 2px;
+    }
+
+    .abtn
+    {
+        display: inline-block;
+        border: 1px solid #ccc;
+        padding:5px;
+        border-radius: 2px;
+
+    }
+
+}

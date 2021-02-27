@@ -1,0 +1,199 @@
+body{ display: none; }
+.prism-layout
+{
+    position: fixed !important;
+    left: 0px;
+    right:0px;
+    bottom: 0px;
+    top:0px;
+    background-color: rgba($color: #000000, $alpha: .8);
+    z-index: 99999;
+
+    .center-box
+    {
+        width:40%;
+        min-width: 300px;
+        height: fit-content;
+
+
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+
+        border-radius: 5px;
+        padding:20px;
+
+        position: relative;
+    }
+
+    .prism-close-btn
+    {
+        display: inline-block;
+        position: absolute;
+        top:-30px;
+        right:-30px;
+        color:white;
+        font-size: 12px;
+        font-family: monospace;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .prismtabs
+    {
+        .tab-nav
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 18px;
+            a
+            {
+                cursor: pointer;
+                display: inline-block;
+                padding-bottom: 5px;
+                border-bottom: 2px transparent solid;
+                &:not(:last-child)
+                {
+                    margin-right: 20px;
+                }
+                &.active
+                {
+                    color:black;
+                    border-bottom: 2px black solid;
+                }
+
+            }
+        }
+    }
+
+    .prism-form
+    {
+        input
+        {
+            border: rgba(209, 213, 219, 1) solid 1px;
+            border-radius: 0.25rem;
+            width:100%;
+            padding:0.5rem;
+        }
+
+        button
+        {
+            color:white;
+            background-color: #000000;
+            border: rgba(209, 213, 219, 1) solid 1px;
+            border-radius: 0.25rem;
+            padding:0.5rem;
+            &:hover
+            {
+                color:#000000;
+                background-color: white;
+            }
+        }
+
+        margin-bottom: 2rem;
+    }
+
+    .prism-row
+    {
+        margin-bottom: 0.5rem;
+        .left
+        {
+            font-weight: bold;
+        }
+        .right
+        {
+            color:#999;
+        }
+
+        &.dot
+        {
+
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        &.dot2
+        {
+            border-bottom: 1px dotted #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .cursor-pointer
+    {
+        cursor: pointer;
+    }
+
+    .prism-mt-2
+    {
+        margin-top: 1rem;
+    }
+
+    .prism-mb-2
+    {
+        margin-bottom: 1rem;
+    }
+
+    .prism-mt-1
+    {
+        margin-top: 0.5rem;
+    }
+
+    .prism-mb-1
+    {
+        margin-bottom: 0.5rem;
+    }
+
+    .prism-pb-1
+    {
+        padding-bottom: 2rem;
+    }
+
+    .p-2
+    {
+        padding: 0.5rem;
+    }
+
+    .ml-2
+    {
+        margin-left: 0.5rem;
+    }
+
+    .xspan
+    {
+        font-size: small;
+        color:white;
+        background-color: #2B87DC;
+        padding:2px;
+        padding-left:5px;
+        padding-right:5px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border-radius: 2px;
+    }
+
+    .logo
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        img
+        {
+            max-width: 4rem;
+        }
+    }
+
+    .hcenter
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+}

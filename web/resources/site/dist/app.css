@@ -1,0 +1,149 @@
+body {
+  display: none;
+}
+
+.prism-layout {
+  position: fixed !important;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+}
+.prism-layout .center-box {
+  width: 40%;
+  min-width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+.prism-layout .prism-close-btn {
+  display: inline-block;
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  color: white;
+  font-size: 12px;
+  font-family: monospace;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.prism-layout .prismtabs .tab-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.prism-layout .prismtabs .tab-nav a {
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 2px transparent solid;
+}
+.prism-layout .prismtabs .tab-nav a:not(:last-child) {
+  margin-right: 20px;
+}
+.prism-layout .prismtabs .tab-nav a.active {
+  color: black;
+  border-bottom: 2px black solid;
+}
+.prism-layout .prism-form {
+  margin-bottom: 2rem;
+}
+.prism-layout .prism-form input {
+  border: #d1d5db solid 1px;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 0.5rem;
+}
+.prism-layout .prism-form button {
+  color: white;
+  background-color: #000000;
+  border: #d1d5db solid 1px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+.prism-layout .prism-form button:hover {
+  color: #000000;
+  background-color: white;
+}
+.prism-layout .prism-row {
+  margin-bottom: 0.5rem;
+}
+.prism-layout .prism-row .left {
+  font-weight: bold;
+}
+.prism-layout .prism-row .right {
+  color: #999;
+}
+.prism-layout .prism-row.dot {
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.prism-layout .prism-row.dot2 {
+  border-bottom: 1px dotted #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.prism-layout .cursor-pointer {
+  cursor: pointer;
+}
+.prism-layout .prism-mt-2 {
+  margin-top: 1rem;
+}
+.prism-layout .prism-mb-2 {
+  margin-bottom: 1rem;
+}
+.prism-layout .prism-mt-1 {
+  margin-top: 0.5rem;
+}
+.prism-layout .prism-mb-1 {
+  margin-bottom: 0.5rem;
+}
+.prism-layout .prism-pb-1 {
+  padding-bottom: 2rem;
+}
+.prism-layout .p-2 {
+  padding: 0.5rem;
+}
+.prism-layout .ml-2 {
+  margin-left: 0.5rem;
+}
+.prism-layout .xspan {
+  font-size: small;
+  color: white;
+  background-color: #2B87DC;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 2px;
+}
+.prism-layout .logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.prism-layout .logo img {
+  max-width: 4rem;
+}
+.prism-layout .hcenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
