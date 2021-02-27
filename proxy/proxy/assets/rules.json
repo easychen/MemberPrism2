@@ -1,0 +1,26 @@
+{
+  "1": {
+    "content_id": "1",
+    "path": "/vip1",
+    "match": 1,
+    "redir": "/forbidden.html"
+  },
+  "2": {
+    "content_id": "2",
+    "path": "/vip2",
+    "match": 1,
+    "redir": "/forbidden.html"
+  },
+  "3": {
+    "content_id": "3",
+    "path": "/vip3",
+    "match": 1,
+    "redir": "/forbidden.html"
+  },
+  "4": {
+    "content_id": "4",
+    "path": "/vip3",
+    "match": 1,
+    "redir": "/forbidden.html"
+  }
+}

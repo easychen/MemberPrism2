@@ -1,12 +1,13 @@
-# MemberPrism 
+# Member Prism
+
+<img src="web/public/img/brand.svg" width="360"/>
+
 open source alternative to memberstack / memberspace , but with both front and backend member-only content protection
-Will open source soon , please watch the repo for updates.
 
-![picture 1](images/7ff8a6db94c5aa55be336a84bcab53c5c198d33919179a77df37dc7e593b4574.png)  
+# License
 
-# 漫波之镜
+This project uses the GPLv2 License with conditions.
 
-Memberstack / memberspace 的开源替代品 , 但在会员内容保护上更为强大，同时提供了基于前端和后端的保护。
-即将开源，请 watch repo 获得更新通知。
+Both individuals and commercial companies can use MemberPrism to build their own member-only content application under the GPLv2 license.
 
-![picture 1](images/7ff8a6db94c5aa55be336a84bcab53c5c198d33919179a77df37dc7e593b4574.png)  
+However, selling MemberPrism itself as a Cloud Hosting service (e.g., Selling MemberPrism as a cloud service through Docker2SaaS or other platforms) is prohibited.

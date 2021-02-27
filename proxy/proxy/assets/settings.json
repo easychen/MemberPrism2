@@ -1,0 +1,10 @@
+{
+  "debug": false,
+  "secret": "hello-im-secret",
+  "target": "http://127.0.0.1:9000",
+  "host": "127.0.0.1",
+  "port": 10086,
+  "https": false,
+  "key": "server.key",
+  "crt": "server.crt"
+}
