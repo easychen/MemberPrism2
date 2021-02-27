@@ -4,6 +4,11 @@
 
 open source alternative to memberstack / memberspace , but with both front and backend member-only content protection
 
+# Document
+
+- [English](docs/README.md)
+- [简体中文](docs/zh/README.md)
+
 # License
 
 This project uses the GPLv2 License with conditions.
