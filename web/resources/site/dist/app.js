@@ -3453,11 +3453,272 @@ var prismKit = /*#__PURE__*/function () {
   }
 
   _createClass(prismKit, [{
+    key: "post",
+    value: function () {
+      var _post = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(path, data) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.request('post', this.api_base_url + path, data);
+
+              case 2:
+                return _context.abrupt("return", _context.sent);
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function post(_x, _x2) {
+        return _post.apply(this, arguments);
+      }
+
+      return post;
+    }()
+  }, {
+    key: "get",
+    value: function () {
+      var _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(path) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.request('get', this.api_base_url + path);
+
+              case 2:
+                return _context2.abrupt("return", _context2.sent);
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function get(_x3) {
+        return _get.apply(this, arguments);
+      }
+
+      return get;
+    }()
+  }, {
+    key: "request",
+    value: function () {
+      var _request = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(method, url, data) {
+        var params, headers, jwt, message, errors;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                params = new URLSearchParams();
+
+                if (data) {
+                  Object.keys(data).forEach(function (item) {
+                    return params.append(item, data[item]);
+                  });
+                }
+
+                headers = {
+                  Accept: 'application/json'
+                };
+                jwt = this.load_jwt();
+
+                if (jwt) {
+                  params.append('jwt', jwt);
+                  headers['Authorization'] = 'Bearer ' + jwt;
+                }
+
+                _context3.prev = 5;
+
+                if (!(method == 'get')) {
+                  _context3.next = 14;
+                  break;
+                }
+
+                _context3.t0 = this;
+                _context3.next = 10;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get(url, {
+                  headers: headers
+                });
+
+              case 10:
+                _context3.t1 = _context3.sent;
+                return _context3.abrupt("return", _context3.t0.return_data.call(_context3.t0, _context3.t1));
+
+              case 14:
+                _context3.t2 = this;
+                _context3.next = 17;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post(url, params, {
+                  headers: headers
+                });
+
+              case 17:
+                _context3.t3 = _context3.sent;
+                return _context3.abrupt("return", _context3.t2.return_data.call(_context3.t2, _context3.t3));
+
+              case 19:
+                _context3.next = 42;
+                break;
+
+              case 21:
+                _context3.prev = 21;
+                _context3.t4 = _context3["catch"](5);
+                message = _context3.t4.response && _context3.t4.response.data || _context3.t4.message;
+                console.log("message", message);
+
+                if (!(message.message == 'Signature verification failed')) {
+                  _context3.next = 28;
+                  break;
+                }
+
+                this.user_logout();
+                return _context3.abrupt("return", true);
+
+              case 28:
+                if (!(message.message == 'Login first')) {
+                  _context3.next = 31;
+                  break;
+                }
+
+                this.load_page('login');
+                return _context3.abrupt("return", true);
+
+              case 31:
+                if (!(message.errors.error == 'Already has a subscription')) {
+                  _context3.next = 34;
+                  break;
+                }
+
+                if (window.confirm(message.errors.error + ', manage it?')) this.stripe_port();
+                return _context3.abrupt("return", true);
+
+              case 34:
+                if (!message.errors) {
+                  _context3.next = 38;
+                  break;
+                }
+
+                errors = Object.values(message.errors);
+                alert(errors.join(" "));
+                return _context3.abrupt("return", false);
+
+              case 38:
+                if (!message.message) {
+                  _context3.next = 41;
+                  break;
+                }
+
+                alert(message.message);
+                return _context3.abrupt("return", false);
+
+              case 41:
+                return _context3.abrupt("return", false);
+
+              case 42:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[5, 21]]);
+      }));
+
+      function request(_x4, _x5, _x6) {
+        return _request.apply(this, arguments);
+      }
+
+      return request;
+    }()
+  }, {
+    key: "return_data",
+    value: function return_data(ret) {
+      return ret;
+
+      if (ret.status != 200) {
+        return ret;
+      }
+
+      var data = ret.data;
+      return data;
+    }
+  }, {
+    key: "load_page",
+    value: function () {
+      var _load_page = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(page) {
+        var _yield$this$get, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return this.get('page/' + page);
+
+              case 2:
+                _yield$this$get = _context4.sent;
+                data = _yield$this$get.data;
+
+                if (data) {
+                  _context4.next = 6;
+                  break;
+                }
+
+                return _context4.abrupt("return", false);
+
+              case 6:
+                this.make_layout();
+                this.show_layout();
+                document.querySelector("#prism-layout-div").innerHTML = data;
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function load_page(_x7) {
+        return _load_page.apply(this, arguments);
+      }
+
+      return load_page;
+    }()
+  }, {
+    key: "show_layout",
+    value: function show_layout() {
+      document.querySelector("#prism-layout-div").style.display = 'block';
+    }
+  }, {
+    key: "hide_layout",
+    value: function hide_layout() {
+      document.querySelector("#prism-layout-div").style.display = 'none';
+      document.querySelector("#prism-layout-div").innerHTML = '';
+    }
+  }, {
+    key: "make_layout",
+    value: function make_layout() {
+      var layout_id = 'prism-layout-div';
+
+      if (!document.querySelector("#" + layout_id)) {
+        var thediv = document.createElement("div");
+        thediv.id = layout_id;
+        thediv.className = 'prism-layout';
+        document.body.appendChild(thediv);
+      }
+    }
+  }, {
     key: "check_lock",
     value: function () {
-      var _check_lock = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _check_lock = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var force_request,
-            _yield$this$get,
+            _yield$this$get2,
             data,
             _iterator,
             _step,
@@ -3471,32 +3732,32 @@ var prismKit = /*#__PURE__*/function () {
             _iterator3,
             _step3,
             _node,
-            _args = arguments;
+            _args5 = arguments;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                force_request = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
+                force_request = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : false;
 
                 if (!(!this.lock_path || force_request)) {
-                  _context.next = 10;
+                  _context5.next = 10;
                   break;
                 }
 
-                _context.next = 4;
+                _context5.next = 4;
                 return this.get('lock');
 
               case 4:
-                _yield$this$get = _context.sent;
-                data = _yield$this$get.data;
+                _yield$this$get2 = _context5.sent;
+                data = _yield$this$get2.data;
 
                 if (data) {
-                  _context.next = 8;
+                  _context5.next = 8;
                   break;
                 }
 
-                return _context.abrupt("return", this.user_logout());
+                return _context5.abrupt("return", this.user_logout());
 
               case 8:
                 this.lock_path = data.locks || [];
@@ -3571,10 +3832,10 @@ var prismKit = /*#__PURE__*/function () {
 
               case 16:
               case "end":
-                return _context.stop();
+                return _context5.stop();
             }
           }
-        }, _callee, this);
+        }, _callee5, this);
       }));
 
       function check_lock() {
@@ -3583,267 +3844,6 @@ var prismKit = /*#__PURE__*/function () {
 
       return check_lock;
     }()
-  }, {
-    key: "post",
-    value: function () {
-      var _post = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(path, data) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return this.request('post', this.api_base_url + path, data);
-
-              case 2:
-                return _context2.abrupt("return", _context2.sent);
-
-              case 3:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function post(_x, _x2) {
-        return _post.apply(this, arguments);
-      }
-
-      return post;
-    }()
-  }, {
-    key: "get",
-    value: function () {
-      var _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(path) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return this.request('get', this.api_base_url + path);
-
-              case 2:
-                return _context3.abrupt("return", _context3.sent);
-
-              case 3:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
-      function get(_x3) {
-        return _get.apply(this, arguments);
-      }
-
-      return get;
-    }()
-  }, {
-    key: "request",
-    value: function () {
-      var _request = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(method, url, data) {
-        var params, headers, jwt, message, errors;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                params = new URLSearchParams();
-
-                if (data) {
-                  Object.keys(data).forEach(function (item) {
-                    return params.append(item, data[item]);
-                  });
-                }
-
-                headers = {
-                  Accept: 'application/json'
-                };
-                jwt = this.load_jwt();
-
-                if (jwt) {
-                  params.append('jwt', jwt);
-                  headers['Authorization'] = 'Bearer ' + jwt;
-                }
-
-                _context4.prev = 5;
-
-                if (!(method == 'get')) {
-                  _context4.next = 14;
-                  break;
-                }
-
-                _context4.t0 = this;
-                _context4.next = 10;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get(url, {
-                  headers: headers
-                });
-
-              case 10:
-                _context4.t1 = _context4.sent;
-                return _context4.abrupt("return", _context4.t0.return_data.call(_context4.t0, _context4.t1));
-
-              case 14:
-                _context4.t2 = this;
-                _context4.next = 17;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post(url, params, {
-                  headers: headers
-                });
-
-              case 17:
-                _context4.t3 = _context4.sent;
-                return _context4.abrupt("return", _context4.t2.return_data.call(_context4.t2, _context4.t3));
-
-              case 19:
-                _context4.next = 42;
-                break;
-
-              case 21:
-                _context4.prev = 21;
-                _context4.t4 = _context4["catch"](5);
-                message = _context4.t4.response && _context4.t4.response.data || _context4.t4.message;
-                console.log("message", message);
-
-                if (!(message.message == 'Signature verification failed')) {
-                  _context4.next = 28;
-                  break;
-                }
-
-                this.user_logout();
-                return _context4.abrupt("return", true);
-
-              case 28:
-                if (!(message.message == 'Login first')) {
-                  _context4.next = 31;
-                  break;
-                }
-
-                this.load_page('login');
-                return _context4.abrupt("return", true);
-
-              case 31:
-                if (!(message.errors.error == 'Already has a subscription')) {
-                  _context4.next = 34;
-                  break;
-                }
-
-                if (window.confirm(message.errors.error + ', manage it?')) this.stripe_port();
-                return _context4.abrupt("return", true);
-
-              case 34:
-                if (!message.errors) {
-                  _context4.next = 38;
-                  break;
-                }
-
-                errors = Object.values(message.errors);
-                alert(errors.join(" "));
-                return _context4.abrupt("return", false);
-
-              case 38:
-                if (!message.message) {
-                  _context4.next = 41;
-                  break;
-                }
-
-                alert(message.message);
-                return _context4.abrupt("return", false);
-
-              case 41:
-                return _context4.abrupt("return", false);
-
-              case 42:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this, [[5, 21]]);
-      }));
-
-      function request(_x4, _x5, _x6) {
-        return _request.apply(this, arguments);
-      }
-
-      return request;
-    }()
-  }, {
-    key: "return_data",
-    value: function return_data(ret) {
-      return ret;
-
-      if (ret.status != 200) {
-        return ret;
-      }
-
-      var data = ret.data;
-      return data;
-    }
-  }, {
-    key: "load_page",
-    value: function () {
-      var _load_page = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(page) {
-        var _yield$this$get2, data;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return this.get('page/' + page);
-
-              case 2:
-                _yield$this$get2 = _context5.sent;
-                data = _yield$this$get2.data;
-
-                if (data) {
-                  _context5.next = 6;
-                  break;
-                }
-
-                return _context5.abrupt("return", false);
-
-              case 6:
-                this.make_layout();
-                this.show_layout();
-                document.querySelector("#prism-layout-div").innerHTML = data;
-
-              case 9:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5, this);
-      }));
-
-      function load_page(_x7) {
-        return _load_page.apply(this, arguments);
-      }
-
-      return load_page;
-    }()
-  }, {
-    key: "show_layout",
-    value: function show_layout() {
-      document.querySelector("#prism-layout-div").style.display = 'block';
-    }
-  }, {
-    key: "hide_layout",
-    value: function hide_layout() {
-      document.querySelector("#prism-layout-div").style.display = 'none';
-      document.querySelector("#prism-layout-div").innerHTML = '';
-    }
-  }, {
-    key: "make_layout",
-    value: function make_layout() {
-      var layout_id = 'prism-layout-div';
-
-      if (!document.querySelector("#" + layout_id)) {
-        var thediv = document.createElement("div");
-        thediv.id = layout_id;
-        thediv.className = 'prism-layout';
-        document.body.appendChild(thediv);
-      }
-    }
   }, {
     key: "user_login",
     value: function () {
@@ -4240,17 +4240,32 @@ var prismKit = /*#__PURE__*/function () {
 var prism_kit = new prismKit();
 window.prism_kit = prism_kit;
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(event) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(event) {
     var pages, _iterator4, _step4, _loop, subs, _iterator5, _step5, _loop2;
 
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
       while (1) {
-        switch (_context12.prev = _context12.next) {
+        switch (_context13.prev = _context13.next) {
           case 0:
-            prism_kit.check_lock();
-            window.setInterval(function () {
-              prism_kit.check_lock();
-            }, 1000 * 10); // ajax 加载页面
+            _context13.next = 2;
+            return prism_kit.check_lock();
+
+          case 2:
+            window.setInterval( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12() {
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      _context12.next = 2;
+                      return prism_kit.check_lock();
+
+                    case 2:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12);
+            })), 1000 * 10); // ajax 加载页面
 
             pages = document.querySelectorAll("[href^='#prism-ajax-']");
 
@@ -4307,14 +4322,14 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/function () {
               }
             }
 
-            document.querySelector("body").style.display = "block";
+            document.querySelector("body").style.visibility = "visible";
 
-          case 7:
+          case 8:
           case "end":
-            return _context12.stop();
+            return _context13.stop();
         }
       }
-    }, _callee12);
+    }, _callee13);
   }));
 
   return function (_x9) {

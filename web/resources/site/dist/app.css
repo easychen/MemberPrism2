@@ -1,5 +1,5 @@
 body {
-  display: none;
+  visibility: hidden;
 }
 
 .prism-layout {

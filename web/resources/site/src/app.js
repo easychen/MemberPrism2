@@ -16,70 +16,6 @@ class prismKit
         this.lock_path = false;
     }
 
-    async check_lock( force_request = false )
-    {
-        // return true;
-        if( !this.lock_path || force_request )
-        {
-            const { data } = await this.get( 'lock' );
-            if( !data ) return this.user_logout();
-
-
-            this.lock_path = data.locks || [];
-            this.is_member = data.is_member > 0;
-        }
-
-        for( const lock of this.lock_path )
-        {
-            let do_lock = false;
-            if( lock.match == 1 )
-            {
-                if(window.location.pathname.indexOf(lock.path) >= 0)
-                {
-                    do_lock = true;
-                }
-            }
-
-            if( lock.match == 2 )
-            {
-                if(window.location.pathname == lock.path)
-                {
-                    do_lock = true;
-                }
-            }
-
-            if( do_lock )
-            {
-                window.document.body.style.display='none';
-                window.document.body.innerHTML='';
-                window.location = lock.redir;
-            }
-
-
-        }
-
-        // 对会员显示
-        var member_show_items = document.querySelectorAll(".prism-member-show");
-        if( member_show_items )
-        {
-            for( const node of member_show_items )
-            {
-                if( !this.is_member ) node.style.display = 'none';
-                else node.style.display = 'inherit';
-            }
-        }
-
-        var member_hide_items = document.querySelectorAll(".prism-member-hide");
-        if( member_hide_items )
-        {
-            for( const node of member_hide_items )
-            {
-                if( this.is_member ) node.style.display = 'none';
-                else node.style.display = 'inherit';
-            }
-        }
-    }
-
     async post( path , data )
     {
         return await this.request( 'post' , this.api_base_url+path, data );
@@ -207,6 +143,70 @@ class prismKit
             thediv.id = layout_id;
             thediv.className = 'prism-layout';
             document.body.appendChild( thediv );
+        }
+    }
+
+    async check_lock( force_request = false )
+    {
+        // return true;
+        if( !this.lock_path || force_request )
+        {
+            const { data } = await this.get( 'lock' );
+            if( !data ) return this.user_logout();
+
+
+            this.lock_path = data.locks || [];
+            this.is_member = data.is_member > 0;
+        }
+
+        for( const lock of this.lock_path )
+        {
+            let do_lock = false;
+            if( lock.match == 1 )
+            {
+                if(window.location.pathname.indexOf(lock.path) >= 0)
+                {
+                    do_lock = true;
+                }
+            }
+
+            if( lock.match == 2 )
+            {
+                if(window.location.pathname == lock.path)
+                {
+                    do_lock = true;
+                }
+            }
+
+            if( do_lock )
+            {
+                window.document.body.style.display='none';
+                window.document.body.innerHTML='';
+                window.location = lock.redir;
+            }
+
+
+        }
+
+        // 对会员显示
+        var member_show_items = document.querySelectorAll(".prism-member-show");
+        if( member_show_items )
+        {
+            for( const node of member_show_items )
+            {
+                if( !this.is_member ) node.style.display = 'none';
+                else node.style.display = 'inherit';
+            }
+        }
+
+        var member_hide_items = document.querySelectorAll(".prism-member-hide");
+        if( member_hide_items )
+        {
+            for( const node of member_hide_items )
+            {
+                if( this.is_member ) node.style.display = 'none';
+                else node.style.display = 'inherit';
+            }
         }
     }
 
@@ -378,8 +378,8 @@ window.prism_kit = prism_kit;
 
 document.addEventListener("DOMContentLoaded", async function(event)
 {
-    prism_kit.check_lock();
-    window.setInterval( ()=>{prism_kit.check_lock()}, 1000*10 );
+    await prism_kit.check_lock();
+    window.setInterval( async()=>{await prism_kit.check_lock()}, 1000*10 );
 
 
     // ajax 加载页面
@@ -413,7 +413,7 @@ document.addEventListener("DOMContentLoaded", async function(event)
         }
     }
 
-    document.querySelector("body").style.display="block";
+    document.querySelector("body").style.visibility="visible";
 });
 
 
