@@ -4,6 +4,15 @@
 
 open source alternative to memberstack / memberspace , but with both front and backend member-only content protection
 
+# Video
+
+Youtube: How to add membership management, subscriptions and content protection to a website in less than ten minutes.
+
+[![youtube](https://img.youtube.com/vi/lmhISws3UJk/0.jpg)](https://www.youtube.com/watch?v=lmhISws3UJk)
+
+Bilibili link: <https://www.bilibili.com/video/BV16h411k7br/>
+
+
 # Document
 
 - [English](docs/README.md)
